@@ -1,17 +1,12 @@
 package cn.answering.blog.domain;
 
 import org.springframework.data.annotation.Id;
-
-import java.io.Serializable;
+import org.springframework.security.core.GrantedAuthority;
 
 /**
- * Created by zjp on 2017/9/1.
- *
- * 标题实体类
+ * Created by zjp on 2017/9/13.
  */
-public class Title implements Serializable{
-
-    private static final long serialVersionUID = -3266928488701846147L;
+public class SysRole implements GrantedAuthority {
 
     @Id
     private String id;
@@ -34,8 +29,19 @@ public class Title implements Serializable{
         this.name = name;
     }
 
+    public SysRole(){}
+
+    public SysRole(String name){
+        this.name = name;
+    }
+
     @Override
-    public String toString(){
-        return String.format("the title is: name is %s,id is %s ",name,id );
+    public String toString() {
+        return String.format("this is role,and id is %s,name is %s",id,name);
+    }
+
+    @Override
+    public String getAuthority() {
+        return name;
     }
 }
